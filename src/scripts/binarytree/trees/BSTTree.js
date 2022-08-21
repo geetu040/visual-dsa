@@ -24,7 +24,7 @@ export default class BSTTree extends Traversal {
 		if (root === null)
 			return null;
 
-		if (key == root.key)
+		if (key === root.key)
 			return root;
 
 		if (key < root.key)

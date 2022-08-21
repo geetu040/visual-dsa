@@ -3,7 +3,7 @@ import NodeProperties from "./NodeProperties";
 export default class Rotations extends NodeProperties {
 	rotateRight(root) {
 		if (this.l === null) return this;
-		if (this == root) {
+		if (this === root) {
 			let extra_node = root.l.r;
 			let original_root = Object.assign(Object.create(Object.getPrototypeOf(root)), root);
 			original_root.l = extra_node;
@@ -13,7 +13,7 @@ export default class Rotations extends NodeProperties {
 			return root;
 		}
 		let parent = this.getParent(root);
-		if (parent.l == this) {
+		if (parent.l === this) {
 			// is a left child
 			let extra_node = this.l.r;
 			parent.l = this.l
@@ -21,7 +21,7 @@ export default class Rotations extends NodeProperties {
 			this.l = extra_node;
 			return this;
 		}
-		if (parent.r == this) {
+		if (parent.r === this) {
 			// is a right child
 			let extra_node = this.l.r;
 			parent.r = this.l;
@@ -39,7 +39,7 @@ export default class Rotations extends NodeProperties {
 	// }
 	rotateLeft(root) {
 		if (this.r === null) return this;
-		if (this == root) {
+		if (this === root) {
 			let extra_node = root.r.l;
 			let original_root = Object.assign(Object.create(Object.getPrototypeOf(root)), root);
 			original_root.r = extra_node;
@@ -49,7 +49,7 @@ export default class Rotations extends NodeProperties {
 			return root;
 		}
 		let parent = this.getParent(root);
-		if (parent.r == this) {
+		if (parent.r === this) {
 			// is a right child
 			let extra_node = this.r.l;
 			parent.r = this.r
@@ -57,7 +57,7 @@ export default class Rotations extends NodeProperties {
 			this.r = extra_node;
 			return this;
 		}
-		if (parent.l == this) {
+		if (parent.l === this) {
 			// is a left child
 			let extra_node = this.r.l;
 			parent.l = this.r;

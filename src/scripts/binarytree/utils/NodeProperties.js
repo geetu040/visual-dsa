@@ -2,11 +2,11 @@ import Node from "../main";
 
 export default class NodeProperties {
 	getParent(root) {
-		if (root == this) return null;
+		if (root === this) return null;
 		let order = root.preOrder();
 		let parent;
 		order.forEach((e) => {
-			if (e.l == this || e.r == this) parent = e;
+			if (e.l === this || e.r === this) parent = e;
 		})
 		return parent;
 	}
@@ -26,7 +26,7 @@ export default class NodeProperties {
 		return bf;
 	}
 	height(node=this) {
-		if (node == null) 
+		if (node === null) 
 			return 0;
 
 		let hl = this.height(node.l);
@@ -232,7 +232,7 @@ export default class NodeProperties {
 	// }
 
 	// getleftNullSpace(root) {
-	// 	if (this == root) return 0;
+	// 	if (this === root) return 0;
 
 	// 	let parent = this.getParent(root);
 
@@ -251,7 +251,7 @@ export default class NodeProperties {
 	// 	return 0;
 	// }
 	// getrightNullSpace(root) {
-	// 	if (this == root) return 0;
+	// 	if (this === root) return 0;
 
 	// 	let parent = this.getParent(root);
 		
@@ -275,21 +275,21 @@ export default class NodeProperties {
 
 	// 	if (nullCount === 0) return 0;
 
-	// 	if (parent.r === this && nullCount%2 == 0) {
+	// 	if (parent.r === this && nullCount%2 === 0) {
 	// 		// right and even
 
 	// 	}
-	// 	if (parent.r === this && nullCount%2 == 1) {
+	// 	if (parent.r === this && nullCount%2 === 1) {
 	// 		// right and odd
 
 	// 	}
-	// 	if (parent.l === this && nullCount%2 == 0) {
+	// 	if (parent.l === this && nullCount%2 === 0) {
 	// 		// left and even
 
 	// 		return 0;
 	// 		return 1;
 	// 	}
-	// 	if (parent.l === this && nullCount%2 == 1) {
+	// 	if (parent.l === this && nullCount%2 === 1) {
 	// 		// left and odd
 
 	// 	}
@@ -324,7 +324,7 @@ export default class NodeProperties {
 		return this.childrenCountAux(this) - 1;
 	}
 	childrenCountAux(node) {
-		if (node == null)
+		if (node === null)
 			return 0;
 		return 1 + this.childrenCountAux(node.l) + this.childrenCountAux(node.r);
 	}
@@ -348,7 +348,7 @@ export default class NodeProperties {
 	getLevelsAux(previous_level=[this]) {
 		let level = []
 		previous_level.forEach((l)=>{
-			if (l == null) {
+			if (l === null) {
 				level.push(null);
 				level.push(null);
 			} else {
@@ -382,9 +382,9 @@ export default class NodeProperties {
 	}
 	copy(new_node = null) {
 		new_node = new Node(this.key)
-		if (this.l == null) new_node.l = null;
+		if (this.l === null) new_node.l = null;
 		else new_node.l = this.l.copy(new_node.l)
-		if (this.r == null) new_node.r = null
+		if (this.r === null) new_node.r = null
 		else new_node.r = this.r.copy(new_node.r)
 		return new_node;
 	}

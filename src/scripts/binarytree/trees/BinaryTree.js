@@ -31,10 +31,10 @@ export default class BinaryTree extends Traversal {
 		return atLeft;
 	}
 	deleteNode(root, node) {
-		if (node.l == null && node.r == null) {
+		if (node.l === null && node.r === null) {
 			let parent = node.getParent(root);
-			if (parent.l == node) parent.l = null;
-			if (parent.r == node) parent.r = null;
+			if (parent.l === node) parent.l = null;
+			if (parent.r === node) parent.r = null;
 			return;
 		}
 		if (node.l != null) {

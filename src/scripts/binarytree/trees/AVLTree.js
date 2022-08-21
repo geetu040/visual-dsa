@@ -29,7 +29,7 @@ export default class AVLTree extends Traversal {
 			if (bf > 1) {
 				if (root.l !== null) root.l.rotateLeft(orig_root);
 				let isRoot = false;
-				if (root == orig_root) isRoot = true;
+				if (root === orig_root) isRoot = true;
 				let rotated = root.rotateRight(orig_root);
 				if (isRoot) {
 					root.key = rotated.key;
@@ -41,7 +41,7 @@ export default class AVLTree extends Traversal {
 			if (bf < -1) {
 				if (root.r !== null) root.r.rotateRight(orig_root);
 				let isRoot = false;
-				if (root == orig_root) isRoot = true;
+				if (root === orig_root) isRoot = true;
 				let rotated = root.rotateLeft(orig_root);
 				if (isRoot) {
 					root.key = rotated.key;

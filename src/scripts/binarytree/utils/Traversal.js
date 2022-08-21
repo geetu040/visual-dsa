@@ -13,7 +13,7 @@ export default class Traversal extends Rotations {
 		return order;
 	}
 	inOrder (key = false, node = this) {
-		if (node == null) return [];
+		if (node === null) return [];
 		let order = []
 
 		order = order.concat(this.inOrder(key, node.l))
@@ -24,7 +24,7 @@ export default class Traversal extends Rotations {
 		return order;
 	}
 	postOrder (key = false, node = this) {
-		if (node == null) return [];
+		if (node === null) return [];
 		let order = []
 
 		order = order.concat(this.postOrder(key, node.l))
@@ -38,16 +38,17 @@ export default class Traversal extends Rotations {
 		let nextIterStartIndex = order.length
 
 		order.slice(startIndex).map((e, i)=>{
-			if (e.l != null) order.push(e.l)
-			if (e.r != null) order.push(e.r)
+			if (e.l != null) order.push(e.l);
+			if (e.r != null) order.push(e.r);
+			return null;
 		})
 
-		if (order.length == nextIterStartIndex) {
+		if (order.length === nextIterStartIndex) {
 			// empty layer
 			if (key) return order.map((e)=>{return e.key});
 			else return order.map((e)=>{return e});;
 			
 		}
-		return this.levelOrder(key=key, order=order, startIndex=nextIterStartIndex);
+		return this.levelOrder(key, order, nextIterStartIndex);
 	}
 }
