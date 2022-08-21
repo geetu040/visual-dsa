@@ -5,7 +5,7 @@ export default class Traversal extends Rotations {
 		if (node === null) return [];
 		let order = []
 
-		if (key==true) {order.push(node.key)}
+		if (key === true) {order.push(node.key)}
 		else {order.push(node)}
 		order = order.concat(this.preOrder(key, node.l))
 		order = order.concat(this.preOrder(key, node.r))
@@ -17,7 +17,7 @@ export default class Traversal extends Rotations {
 		let order = []
 
 		order = order.concat(this.inOrder(key, node.l))
-		if (key==true) {order.push(node.key)}
+		if (key === true) {order.push(node.key)}
 		else {order.push(node)}
 		order = order.concat(this.inOrder(key, node.r))
 
@@ -29,7 +29,7 @@ export default class Traversal extends Rotations {
 
 		order = order.concat(this.postOrder(key, node.l))
 		order = order.concat(this.postOrder(key, node.r))
-		if (key==true) {order.push(node.key)}
+		if (key === true) {order.push(node.key)}
 		else {order.push(node)}
 
 		return order;
