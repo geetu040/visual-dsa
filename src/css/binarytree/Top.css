@@ -1,0 +1,53 @@
+.bt-top {
+	background-color: var(--bt-dark);
+	padding: 1% 0%;
+	border-bottom: var(--bt-border);
+	border-right: var(--bt-border);
+}
+.bt-top > div {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.bt-top > div > button {
+	text-align: center;
+	margin: 0.5%;
+	padding: 0.5% 0.1%;
+	font-size: 1.6vw;
+	width: 23%;
+	border-radius: 0.2vw;
+	border: 1px solid;
+	background-image: linear-gradient(to right, var(--bt-purple-dark), var(--bt-purple-dark));
+	color: var(--bt-purple-light);
+}
+.bt-top > .top > button {
+}
+.bt-top > .bottom > button {
+	position: relative;
+	margin-top: 0.6%;
+	background-image: none;
+	background-color: var(--bt-purple-light);
+	color: var(--bt-purple-dark);
+	border-radius: 0.3vw;
+}
+.bt-top > .bottom > button.true {
+	filter: drop-shadow(0 0 0.5vw var(--bt-purple)) contrast(2) brightness(1.4);
+}
+.bt-top > .bottom > button > ul {
+	position: absolute;
+	visibility: visible;
+	z-index: 100;
+	background-color: var(--bt-purple-dark);
+	border-radius: 5%;
+	margin-top: 3%;
+	padding: 4%;
+	color: var(--bt-purple-light);
+	border: 1px solid;
+	list-style: none;
+	visibility: hidden;
+
+}
+.bt-top > .bottom > button > ul > li {
+	padding: 10% 5%;
+	border-bottom: 1px solid;
+}

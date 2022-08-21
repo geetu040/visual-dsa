@@ -1,0 +1,39 @@
+:root {
+	--bt-dark: #0F0F0F;
+	--bt-purple-dark: rgb(36, 1, 37);
+	--bt-purple: #764AF1;
+	--bt-purple-light: #a086e8;
+	--bt-light: rgb(239, 235, 235);
+	--bt-border: 0.4vmin solid var(--bt-purple);
+}
+.bt-body {
+	box-sizing: border-box;
+	width: 100%;
+	min-height: 100vh;
+	height: 100%;
+	background-image: linear-gradient(to left, var(--bt-dark)  , var(--bt-purple-dark));
+	border: 0.01px solid black;
+}
+.bt-heading {
+	font-family: 'Anurati', sans-serif;
+	text-align: center;
+	margin-top: 10%;
+	margin-bottom: 7%;
+	color: var(--bt-purple);
+	font-size: 6vw;
+}
+.bt-container {
+	width: 90vw;
+	margin: 0 auto;
+	margin-bottom: 20%;
+	border: var(--bt-border);
+	background-color: var(--bt-light);
+	box-sizing: border-box;
+}
+.bt-sub-container {
+	display: flex;
+	box-sizing: border-box;
+}
+.bt-sub-container-l {
+	box-sizing: border-box;
+}
