@@ -1,8 +1,10 @@
 :root {
 	--bt-dark: #0F0F0F;
 	--bt-purple-dark: rgb(36, 1, 37);
+	--bt-purple-dark-low: rgba(36, 1, 37, 0.203);
 	--bt-purple: #764AF1;
 	--bt-purple-light: #a086e8;
+	--bt-purple-light-low: #a086e884;
 	--bt-light: rgb(239, 235, 235);
 	--bt-border: 0.4vmin solid var(--bt-purple);
 }

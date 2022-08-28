@@ -26,12 +26,13 @@
 	position: relative;
 	margin-top: 0.6%;
 	background-image: none;
-	background-color: var(--bt-purple-light);
+	background-color: var(--bt-purple-light-low);
 	color: var(--bt-purple-dark);
 	border-radius: 0.3vw;
 }
 .bt-top > .bottom > button.true {
-	filter: drop-shadow(0 0 0.5vw var(--bt-purple)) contrast(2) brightness(1.4);
+	background-color: var(--bt-purple-light);
+	/* filter: drop-shadow(0 0 0.5vw var(--bt-purple)) contrast(2) brightness(1.4); */
 }
 .bt-top > .bottom > button > ul {
 	position: absolute;

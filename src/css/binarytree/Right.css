@@ -32,7 +32,7 @@
 	box-shadow: 0px 0px 10px;
 }
 .bt-right>button:disabled {
-	background-color: var(--bt-dark);
+	background-color: var(--bt-purple-dark-low);
 	box-shadow: none;
 	border-width: 1px;
 	cursor: not-allowed;

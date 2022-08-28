@@ -20,7 +20,7 @@ export const Box = ({states, constants}) => {
 
 	const nodeClick = (e) => {
 		if (! e.target.classList.contains("bt-node")) return;
-		states.setSelected( e.target.id.slice(7) );
+		states.setSelected( parseInt(e.target.id.slice(7)) );
 	}
 	const nodeEnter = (e) => {
 		// if (! e.target.classList.contains("bt-node")) return;

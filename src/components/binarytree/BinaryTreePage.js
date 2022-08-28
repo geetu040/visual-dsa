@@ -16,7 +16,7 @@ export const BinaryTreePage = () => {
 		new Node(
 			ran(),
 			new Node(ran(), new Node(ran()), new Node(ran())),
-			new Node(ran(), new Node(ran()), new Node(ran())),
+			// new Node(ran(), new Node(ran()), new Node(ran())),
 		)
 	);
 	
