@@ -1,21 +1,70 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  /* MY CSS */
-  /* background-image: linear-gradient(to right, rgb(240, 123, 240), rgb(102, 102, 227)); */
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }
+
+/* TAILWIND */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FONTS */
+@font-face {
+	font-family: 'font_anurati';
+	src: url(./fonts/Anurati-Regular.otf) format('truetype');
+}
+@font-face {
+	font-family: 'font_gutter';
+	src: url(./fonts/Gutter\ Rust.otf) format('truetype');
+}
+@font-face {
+	font-family: 'font_passion';
+	src: url(./fonts/PassionOne-Black.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'font_vanjar';
+	src: url(./fonts/Vanjar.ttf) format('truetype');
+}
+
+.font-anurati {
+	font-family: "font_anurati";
+}
+.font-gutter {
+	font-family: "font_gutter";
+}
+.font-passion {
+	font-family: "font_passion";
+}
+.font-vanjar {
+	font-family: "font_vanjar";
+}
+
+/* SORTING */
+.sel1 {
+	opacity: 0.7;
+}
+
+.sel2 {
+	opacity: 0.7;
+}
+
+.selected-bar {
+	opacity: 0.7;
+}
+
+
+

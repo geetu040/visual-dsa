@@ -17,12 +17,10 @@
 	border: 0.01px solid black;
 }
 .bt-heading {
-	font-family: 'Anurati', sans-serif;
 	text-align: center;
 	margin-top: 10%;
 	margin-bottom: 7%;
 	color: var(--bt-purple);
-	font-size: 6vw;
 }
 .bt-container {
 	width: 90vw;

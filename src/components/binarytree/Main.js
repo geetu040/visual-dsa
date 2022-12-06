@@ -9,10 +9,8 @@ import "../../css/binarytree/Main.css"
 export const Main = ({states, constants}) => {
 	return (<>
 		<div className='bt-body'>
-			<h1 className='bt-heading'>
+			<h1 className='bt-heading font-gutter text-8xl'>
 				BINARY TREES
-				<br />
-				DSA
 			</h1>
 			<div className="bt-container" style={{width: constants.width + "vw"}}>
 				<Header states={states} constants={constants} />
