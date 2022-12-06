@@ -1,12 +1,19 @@
 import React from 'react'
-import { algos } from '../../scripts/sorting/main'
+// import { algos } from '../../scripts/sorting/main'
 
 export const Header = ({ props }) => {
-	let algo_names = algos.map((algo) => {
-		return algo.name.split("_").map((name) => {
-			return name.slice(0, 1).toUpperCase() + name.slice(1);
-		}).join(" ");
-	})
+	// let algo_names = algos.map((algo) => {
+	// 	return algo.name.split("_").map((name) => {
+	// 		return name.slice(0, 1).toUpperCase() + name.slice(1);
+	// 	}).join(" ");
+	// })
+	let algo_names = [
+		"Insertion Sort",
+		"Selection Sort",
+		"Bubble Sort",
+		"Merge Sort",
+		"Quick Sort",
+	]
 	return (
 		<div className='text-center pt-8 pb-5 space-y-1'>
 			<h1 className='font-gutter text-slate-300 text-6xl py-7'>Sorting Algorithms</h1>
@@ -19,9 +26,6 @@ export const Header = ({ props }) => {
 						return <option
 							key={i}
 							value={i}
-							className={`
-								
-							`}
 						>{algo}
 						</option>
 					})}
