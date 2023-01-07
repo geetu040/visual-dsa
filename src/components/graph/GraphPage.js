@@ -5,11 +5,11 @@ import { Menu } from './Menu';
 
 import map from "./map.json"
 import { apply_algo } from '../../scripts/graph/main';
+import { box_width, swap, swap_elem, spaceItems } from '../../scripts/graph/utils';
 
 export const GraphPage = () => {
 
 	const s = Math.sqrt(map.length);
-	const box_width = 80
 
 	let graph = [];
 	const addToRefs = (elem) => {
@@ -57,21 +57,8 @@ export const GraphPage = () => {
 			}
 		})
 	}
-	const spaceItems = () => {
-		graph.map((item, i)=>{
-			item.style.setProperty("left", `${(i%s)*(box_width/s)}vmin`);
-			item.style.setProperty("top", `${(Math.floor(i/s))*(box_width/s)}vmin`);
-		})
-	}
-	const swap_elem = (elem1, elem2) => {
-		swap(graph.indexOf(elem1), graph.indexOf(elem2));
-	}
-	const swap = (i1, i2) => {
-		let temp = graph[i1];
-		graph[i1] = graph[i2];
-		graph[i2] = temp;
-		spaceItems();
-	}
+
+
 
 	let props = {
 		map,

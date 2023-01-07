@@ -15,3 +15,6 @@
 .gsel {
 	border: 5px solid green;
 }
+.ghigh {
+	background-color: rgba(255, 0, 0, 0.449);
+}

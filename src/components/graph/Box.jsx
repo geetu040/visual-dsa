@@ -7,7 +7,7 @@ export const Box = ({ props }) => {
 	useEffect(() => {
 		// code to run after render goes here
 		props.pointyCorners();
-		props.spaceItems();
+		props.spaceItems(props.graph);
 	});
 
 	return (
@@ -36,7 +36,7 @@ export const Box = ({ props }) => {
 							if (target.classList.contains("g0")) {
 								if (gsel) {
 									gsel.classList.remove("gsel");
-									props.swap_elem(gsel, target);
+									props.swap_elem(props.graph, gsel, target);
 								} else {
 									target.classList.remove("g0")
 									target.classList.add("g1")
@@ -45,7 +45,7 @@ export const Box = ({ props }) => {
 							else if (target.classList.contains("g1")) {
 								if (gsel) {
 									gsel.classList.remove("gsel");
-									props.swap_elem(gsel, target);
+									props.swap_elem(props.graph, gsel, target);
 								} else {
 									target.classList.remove("g1")
 									target.classList.add("g0")
@@ -60,7 +60,7 @@ export const Box = ({ props }) => {
 							else {
 								// target is g2 and selected is g3 or vice virsa
 								gsel.classList.remove("gsel");
-								props.swap_elem(target, gsel);
+								props.swap_elem(props.graph, target, gsel);
 							}
 
 
