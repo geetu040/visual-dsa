@@ -1,7 +1,9 @@
 import { Home } from "./Home";
 import { HomeLink } from "./HomeLink";
+
 import { BinaryTreePage } from "./components/binarytree/BinaryTreePage";
 import { SortingPage } from "./components/sorting/SortingPage";
+import { GraphPage } from "./components/graph/GraphPage";
 
 import {
     BrowserRouter as Router,
@@ -17,6 +19,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/binarytree" element={<BinaryTreePage />} />
                 <Route path="/sorting" element={<SortingPage />} />
+                <Route path="/graph" element={<GraphPage />} />
             </Routes>
         </Router>
     );

@@ -13,6 +13,7 @@ export const Home = () => {
 	`
 	return (<>
 		<div className='bg-blue-200 min-h-screen flex flex-col justify-start items-center py-32 space-y-3'>
+			<Link className={btnStyle} to="/graph">Graphs Algorithms</Link>
 			<Link className={btnStyle} to="/sorting">Sorting Algorithms</Link>
 			<Link className={btnStyle} to="/binarytree">Binary Tree</Link>
 		</div>
