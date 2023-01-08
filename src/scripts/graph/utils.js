@@ -119,6 +119,54 @@ function get_sparse(graph) {
 	}
 	return sparse;
 }
+function distance_ind(i, j, s) {
+	let pos_i = index_to_pos(i, s)
+	let pos_j = index_to_pos(j, s)
+	return Math.abs(pos_i[0] - pos_j[0], 2) + Math.abs(pos_i[1] - pos_j[1], 2)
+}
+function inverse_extract_graph(graph) {
+	// console.log(graph);
+	// let s = graph.length
+	let map = [];
+	
+	graph.forEach((i)=>{
+		i.forEach((j)=>{
+			map.push(j);
+		})
+	})
+
+	return map;
+}
+
+function create_ops(visited, prev, src, des) {
+	let ops = [];
+
+	visited.forEach((u)=>{
+		if (u !== src && u !== des) {
+			ops.push({ "sel": u })
+		}
+	})
+	let rev_ops = []
+	visited.forEach((u)=>{
+		if (u !== src && u !== des) {
+			rev_ops = [{ "desel": u }].concat(rev_ops)
+		}
+	})
+	ops.push(...rev_ops);
+
+	let path = []
+	let cur = des;
+	while (cur) {
+		path = [cur].concat(path)
+		cur = prev[cur];
+	}
+	path = [src].concat(path)
+	let path_ops = path_ind_to_ops(path)
+
+	ops.push(...path_ops);
+	return ops;
+}
+
 
 export {
 	extract_graph,
@@ -126,4 +174,6 @@ export {
 	operate,
 	swap_elem, swap, spaceItems, box_width, shuffle_arr,
 	path_ind_to_ops, get_sparse,
+	distance_ind,
+	inverse_extract_graph, create_ops,
 }

@@ -24,7 +24,7 @@ function getPath(graph, src, des)
 	let sptSet = [];
 	let prev = [];
 	let ops = [];
-	let selected = [];
+	let visited = [];
 
 	for (let i = 0; i < s; i++) {
 		dist.push(s*s+1);
@@ -39,7 +39,7 @@ function getPath(graph, src, des)
 	{
 		let u = minDistance(dist, sptSet);
 		if (dist[u] !== s*s+1 && u!==src && u!==des) {
-			selected.push(u);
+			visited.push(u);
 		}
 		sptSet[u] = true;
 		let v;
@@ -58,11 +58,11 @@ function getPath(graph, src, des)
 		}
 	}
 	
-	selected.forEach((u)=>{
+	visited.forEach((u)=>{
 		ops.push({ "sel": u })
 	})
 	let rev_ops = []
-	selected.forEach((u)=>{
+	visited.forEach((u)=>{
 		rev_ops = [{ "desel": u }].concat(rev_ops)
 	})
 	ops.push(...rev_ops);
