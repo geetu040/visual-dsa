@@ -57,6 +57,7 @@ function getPath(graph, src, des)
 			break;
 		}
 	}
+	
 	selected.forEach((u)=>{
 		ops.push({ "sel": u })
 	})
