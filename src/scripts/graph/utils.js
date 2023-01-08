@@ -44,13 +44,19 @@ function operate(graph, ops) {
 	if (op.desel !== undefined) {
 		graph[op.desel].classList.remove("ghigh");
 	}
+	if (op.sel2 !== undefined) {
+		graph[op.sel2].classList.add("ghigh2");
+	}
+	if (op.desel2 !== undefined) {
+		graph[op.desel2].classList.remove("ghigh2");
+	}
 	if (op.swap !== undefined) {
 		swap(graph, ...op.swap)
 	}
 
 	setTimeout(() => {
 		operate(graph, ops.slice(1))
-	}, 200);
+	}, 50);
 }
 function shuffle_arr(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -76,10 +82,48 @@ const spaceItems = (graph) => {
 		item.style.setProperty("top", `${(Math.floor(i/s))*(box_width/s)}vmin`);
 	})
 }
+function path_ind_to_ops(path) {
+	if (path.length === 2) {
+		return []
+	}
+	return [{ "swap": [path[0], path[1]] }].concat(
+		path_ind_to_ops(path.slice(1))
+	)
+}
+function get_sparse(graph) {
+	let s = graph.length
+	let sparse = []
+	for (let i=0; i<s*s; i++) {
+		let new_arr = [];
+		for (let j=0; j<s*s; j++) {
+			let pos_i = index_to_pos(i, s)
+			let pos_j = index_to_pos(j, s)
+
+			let i_is_valid = graph[pos_i[0]][pos_i[1]] === 0;
+			let j_is_valid = graph[pos_j[0]][pos_j[1]] === 0;
+			let is_valid = j_is_valid && i_is_valid
+
+			let j_is_right_of_i = (j === i+1) && (i%s !== s-1)
+			let j_is_left_of_i = (j === i-1) && (i%s !== 0)
+
+			let j_is_y_of_i = j-i === s || i-j === s
+			let j_i_are_adjacent = j_is_right_of_i || j_is_left_of_i || j_is_y_of_i
+
+			if (is_valid && j_i_are_adjacent) {
+				new_arr.push(1);
+			} else {
+				new_arr.push(0);
+			}
+		}
+		sparse.push(new_arr);
+	}
+	return sparse;
+}
 
 export {
 	extract_graph,
-	pos_to_index,
+	pos_to_index, index_to_pos,
 	operate,
-	swap_elem, swap, spaceItems, box_width, shuffle_arr
+	swap_elem, swap, spaceItems, box_width, shuffle_arr,
+	path_ind_to_ops, get_sparse,
 }

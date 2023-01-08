@@ -1,4 +1,4 @@
-import { pos_to_index, shuffle_arr } from "../utils";
+import { pos_to_index, shuffle_arr, path_ind_to_ops } from "../utils";
 
 function isSafe(graph, visited, next) {
 
@@ -125,14 +125,7 @@ function find_best_path(paths) {
 	let r = Math.floor(Math.random() * shortest_paths.length)
 	return shortest_paths[r];
 }
-function path_ind_to_ops(path) {
-	if (path.length === 2) {
-		return []
-	}
-	return [{ "swap": [path[0], path[1]] }].concat(
-		path_ind_to_ops(path.slice(1))
-	)
-}
+
 
 export default function backtracking(graph, src, des) {
 	let s = graph.length
