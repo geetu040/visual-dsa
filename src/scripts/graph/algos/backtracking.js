@@ -1,4 +1,4 @@
-import { pos_to_index, shuffle_arr, path_ind_to_ops } from "../utils";
+import { pos_to_index, path_ind_to_ops } from "../utils";
 
 function isSafe(graph, visited, next) {
 	let s = graph.length
@@ -9,9 +9,9 @@ function isSafe(graph, visited, next) {
 		return false;
 	if (y < 0 || y >= s)
 		return false;
-	if (graph[y][x] == 1)
+	if (graph[y][x] === 1)
 		return false;
-	if (visited[y][x] == 1)
+	if (visited[y][x] === 1)
 		return false;
 
 	return true;
@@ -34,13 +34,14 @@ function ind_sort_by_closest(start, end, dirs_funcs) {
 				sorted.push(dirs_funcs[Object.keys(dists)[i]])
 			}
 		}
+		return 0;
 	})
 
 	return sorted;
 }
 
 function backtrack(graph, visited, start, end, path, paths) {
-	if (start[0] == end[0] && start[1] == end[1]) {
+	if (start[0] === end[0] && start[1] === end[1]) {
 		paths.push(path);
 		return [[], true];
 	}
@@ -113,7 +114,7 @@ function getPossiblePaths(graph, start, end) {
 		visited.push(temp);
 	}
 
-	let [ops, found] = backtrack(graph, visited, start, end, "", paths);
+	let ops = backtrack(graph, visited, start, end, "", paths)[0];
 
 	return [paths, ops];
 }
@@ -134,6 +135,8 @@ function convert_path(path, pos, s) {
 			break;
 		case "R":
 			pos[1] += 1;
+			break;
+		default:
 			break;
 	}
 	return [pos_to_index(pos, s)].concat(convert_path(path.slice(1), pos, s))

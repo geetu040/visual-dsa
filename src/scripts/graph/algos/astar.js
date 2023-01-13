@@ -1,4 +1,4 @@
-import { create_ops, pos_to_index, path_ind_to_ops, get_sparse, distance_ind, inverse_extract_graph } from "../utils";
+import { create_ops, pos_to_index, distance_ind, inverse_extract_graph } from "../utils";
 
 function findBest(graph, dist, visited, des) {
 
@@ -69,7 +69,7 @@ function findBest(graph, dist, visited, des) {
 function getPath(graph, src, des) {
 
 	let n = graph.length;
-	let s = Math.sqrt(n);
+	// let s = Math.sqrt(n);
 
 	let visited = [];
 	let dist = [];

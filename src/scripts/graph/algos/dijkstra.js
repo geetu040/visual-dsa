@@ -1,4 +1,4 @@
-import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, get_sparse } from "../utils";
 
 function minDistance(dist, sptSet)
 {
@@ -8,7 +8,7 @@ function minDistance(dist, sptSet)
 	let min_index;
 
 	for (let v = 0; v < s; v++)
-		if (sptSet[v] == false && dist[v] <= min){
+		if (sptSet[v] === false && dist[v] <= min){
 			min = dist[v]
 			min_index = v;
 		}
@@ -23,7 +23,6 @@ function getPath(graph, src, des)
 	let dist = [];
 	let sptSet = [];
 	let prev = [];
-	let ops = [];
 	let visited = [];
 
 	for (let i = 0; i < s; i++) {
@@ -60,28 +59,6 @@ function getPath(graph, src, des)
 		}
 	}
 	return create_ops(visited, prev, src, last_stable);
-	
-	visited.forEach((u)=>{
-		ops.push({ "sel": u })
-	})
-	let rev_ops = []
-	visited.forEach((u)=>{
-		rev_ops = [{ "desel": u }].concat(rev_ops)
-	})
-	ops.push(...rev_ops);
-
-	let path = []
-	let cur = des;
-	while (cur) {
-		path = [cur].concat(path)
-		cur = prev[cur];
-	}
-	path = [src].concat(path)
-	let path_ops = path_ind_to_ops(path)
-
-	// return path_ops
-	ops.push(...path_ops);
-	return ops;
 }
 
 export default function dijkstra(graph, src, des) {

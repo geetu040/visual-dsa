@@ -18,7 +18,7 @@ export const GraphPage = () => {
 	const pointyCorners = () => {
 		let map = graph.map((i) => { return i.classList.contains("g1") ? 1 : 0 })
 		graph.map((item, i) => {
-			if (map[i + 1] == 0 && map[i + s] == 0 && i % s !== s - 1) {
+			if (map[i + 1] === 0 && map[i + s] === 0 && i % s !== s - 1) {
 				if (!item.classList.contains("rounded-br")) {
 					item.classList.add("rounded-br");
 				}
@@ -27,7 +27,7 @@ export const GraphPage = () => {
 					item.classList.remove("rounded-br");
 				}
 			}
-			if (map[i - 1] == 0 && map[i - s] == 0 && i % s !== 0) {
+			if (map[i - 1] === 0 && map[i - s] === 0 && i % s !== 0) {
 				if (!item.classList.contains("rounded-tl")) {
 					item.classList.add("rounded-tl");
 				}
@@ -36,7 +36,7 @@ export const GraphPage = () => {
 					item.classList.remove("rounded-tl");
 				}
 			}
-			if (map[i + 1] == 0 && map[i - s] == 0 && i % s !== s - 1) {
+			if (map[i + 1] === 0 && map[i - s] === 0 && i % s !== s - 1) {
 				if (!item.classList.contains("rounded-tr")) {
 					item.classList.add("rounded-tr");
 				}
@@ -45,7 +45,7 @@ export const GraphPage = () => {
 					item.classList.remove("rounded-tr");
 				}
 			}
-			if (map[i - 1] == 0 && map[i + s] == 0 && i % s !== 0) {
+			if (map[i - 1] === 0 && map[i + s] === 0 && i % s !== 0) {
 				if (!item.classList.contains("rounded-bl")) {
 					item.classList.add("rounded-bl");
 				}
@@ -54,6 +54,7 @@ export const GraphPage = () => {
 					item.classList.remove("rounded-bl");
 				}
 			}
+			return 0;
 		})
 	}
 

@@ -1,4 +1,4 @@
-import {extract_graph, operate, inverse_extract_graph} from "./utils"
+import {extract_graph, operate} from "./utils"
 
 import backtracking from "./algos/backtracking";
 import dijkstra from "./algos/dijkstra";

@@ -104,6 +104,7 @@ const spaceItems = (graph) => {
 	graph.map((item, i)=>{
 		item.style.setProperty("left", `${(i%s)*(box_width/s)}vmin`);
 		item.style.setProperty("top", `${(Math.floor(i/s))*(box_width/s)}vmin`);
+		return 0;
 	})
 }
 function path_ind_to_ops(path) {

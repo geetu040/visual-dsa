@@ -1,10 +1,9 @@
-import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, get_sparse } from "../utils";
 
 function getPath(graph, src, des, method)
 {
 	let s = graph.length;
 
-	let ops = [];
 	let prev = [];
 	let visited = [];
 	let to_visit = [];
@@ -50,31 +49,6 @@ function getPath(graph, src, des, method)
 		}
 	}
 	return create_ops(visited, prev, src, last_stable);
-
-	visited.forEach((u)=>{
-		if (u !== src && u !== des) {
-			ops.push({ "sel": u })
-		}
-	})
-	let rev_ops = []
-	visited.forEach((u)=>{
-		if (u !== src && u !== des) {
-			rev_ops = [{ "desel": u }].concat(rev_ops)
-		}
-	})
-	ops.push(...rev_ops);
-
-	let path = []
-	let cur = des;
-	while (cur) {
-		path = [cur].concat(path)
-		cur = prev[cur];
-	}
-	path = [src].concat(path)
-	let path_ops = path_ind_to_ops(path)
-
-	ops.push(...path_ops);
-	return ops;
 }
 
 export default function dfs_bfs(graph, src, des, method) {

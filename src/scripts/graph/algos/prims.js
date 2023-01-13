@@ -1,4 +1,4 @@
-import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, get_sparse } from "../utils";
 
 function findNextBest(graph, visited)
 {
@@ -25,13 +25,11 @@ function getPath(graph, src, des)
 
 	let visited = [];
 	let prev = [];
-	let ops = [];
 
 	for (let i = 0; i < s; i++) {
 		prev.push(null)
 	}
 
-	let found = false;
 	let u = src;
 	let p = null;
 	let last_stable = u;
@@ -60,33 +58,6 @@ function getPath(graph, src, des)
 		})
 	}
 	return create_ops(visited, prev, src, last_stable);
-
-
-	visited.forEach((u)=>{
-		if (u !== src && u !== des) {
-			ops.push({ "sel": u })
-		}
-	})
-	let rev_ops = []
-	visited.forEach((u)=>{
-		if (u !== src && u !== des) {
-			rev_ops = [{ "desel": u }].concat(rev_ops)
-		}
-	})
-	ops.push(...rev_ops);
-
-	let path = []
-	let cur = des;
-	while (cur) {
-		path = [cur].concat(path)
-		cur = prev[cur];
-	}
-	path = [src].concat(path)
-	let path_ops = path_ind_to_ops(path)
-
-	
-	ops.push(...path_ops);
-	return ops;
 }
 
 export default function prims(graph, src, des) {

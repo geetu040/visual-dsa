@@ -18,11 +18,8 @@ export const Box = ({ props }) => {
 						key={i}
 						className={`
 							cursor-pointer
-							
 							absolute
 							g${v}
-							${(v == 1) && `
-							`}
 						`}
 						style={{
 							width: `${props.box_width / props.s}vmin`,
