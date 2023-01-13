@@ -1,4 +1,4 @@
-const box_width = 80
+const box_width = 95
 
 function getTransitionEndEventName() {
 	var transitions = {
@@ -54,12 +54,15 @@ function operate(graph, ops) {
 	}
 	let op = ops[0];
 	let delay = null;
+	let time = 0;
 
 	if (op.sel !== undefined) {
 		graph[op.sel].classList.add("ghigh");
+		time = 50;
 	}
 	if (op.desel !== undefined) {
 		graph[op.desel].classList.remove("ghigh");
+		time = 10;
 	}
 	if (op.swap !== undefined) {
 		delay = graph[op.swap[0]]
@@ -74,7 +77,7 @@ function operate(graph, ops) {
 	else {
 		setTimeout(() => {
 			operate(graph, ops.slice(1));
-		}, 50);
+		}, time);
 	}
 
 

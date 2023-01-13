@@ -1,8 +1,6 @@
 import { pos_to_index, shuffle_arr, path_ind_to_ops } from "../utils";
 
 function isSafe(graph, visited, next) {
-
-
 	let s = graph.length
 	let y = next[0];
 	let x = next[1];
@@ -17,6 +15,28 @@ function isSafe(graph, visited, next) {
 		return false;
 
 	return true;
+}
+function ind_sort_by_closest(start, end, dirs_funcs) {
+	let dists = {
+		'up': Math.abs(start[0]-1 - end[0]) + Math.abs(start[1] - end[1]),
+		'down': Math.abs(start[0]+1 - end[0]) + Math.abs(start[1] - end[1]),
+		'left': Math.abs(start[0] - end[0]) + Math.abs(start[1]-1 - end[1]),
+		'right': Math.abs(start[0] - end[0]) + Math.abs(start[1]+1 - end[1]),
+	}
+	
+	let inds = Object.values(dists).sort();
+	let sorted = [];
+	inds.filter((element, index) => {
+		return inds.indexOf(element) === index;
+	}).map((k)=>{
+		for (let i=0; i<inds.length; i++) {
+			if (Object.values(dists)[i] === k) {
+				sorted.push(dirs_funcs[Object.keys(dists)[i]])
+			}
+		}
+	})
+
+	return sorted;
 }
 
 function backtrack(graph, visited, start, end, path, paths) {
@@ -38,38 +58,38 @@ function backtrack(graph, visited, start, end, path, paths) {
 		ops.push({ "sel": pos_to_index(start, graph.length) })
 	}
 
-	let dirs_funcs = [
-		() => {
+	let dirs_funcs = {
+		"down": () => {
 			if (isSafe(graph, visited, down) && !found) {
 				let [new_ops, new_found] = backtrack(graph, visited, down, end, path + "D", paths);
 				found = new_found;
 				ops = ops.concat(new_ops);
 			}
 		},
-		() => {
+		"right": () => {
 			if (isSafe(graph, visited, right) && !found) {
 				let [new_ops, new_found] = backtrack(graph, visited, right, end, path + "R", paths);
 				found = new_found;
 				ops = ops.concat(new_ops);
 			}
 		},
-		() => {
+		"up": () => {
 			if (isSafe(graph, visited, up) && !found) {
 				let [new_ops, new_found] = backtrack(graph, visited, up, end, path + "U", paths);
 				found = new_found;
 				ops = ops.concat(new_ops);
 			}
 		},
-		() => {
+		"left": () => {
 			if (isSafe(graph, visited, left) && !found) {
 				let [new_ops, new_found] = backtrack(graph, visited, left, end, path + "L", paths);
 				found = new_found;
 				ops = ops.concat(new_ops);
 			}
 		},
-	]
-	shuffle_arr(dirs_funcs);
-	dirs_funcs.forEach((i)=>{i()})
+	}
+	let sorted_funcs = ind_sort_by_closest(start, end, dirs_funcs);
+	sorted_funcs.forEach((i)=>{i()})
 
 	if (path !== "") {
 		ops.push({ "desel": pos_to_index(start, graph.length) })

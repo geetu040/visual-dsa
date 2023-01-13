@@ -53,7 +53,6 @@ code {
 	font-family: "font_vanjar";
 }
 
-/* SORTING */
 .sel1 {
 	opacity: 0.7;
 }
@@ -66,4 +65,45 @@ code {
 	opacity: 0.7;
 }
 
+/* GRAPH */
 
+.g0 {
+	/* background-color: theme('bg-blue-400'); */
+}
+.g1 {
+	/* background-color: rgb(30 58 138 / var(--tw-bg-opacity)); */
+	/* background-color: aqua; */
+	background-color: theme(colors.blue.900);
+	
+}
+.g2 {
+	border-radius: 100%;
+	/* transform: translate(5vmin, 5vmin); */
+	scale: 150%;
+	z-index: 2;
+	background-color: theme(colors.red.700);
+	border: 1px solid theme(colors.red.100);
+}
+.g3 {
+	
+	background-color: theme(colors.green.600);
+	border: 1px solid theme(colors.green.900);
+	border-radius: theme(borderRadius.md);
+	scale: 120%;
+	box-shadow:  0 0 3vmin theme(colors.black);
+	z-index: 1;
+	
+}
+.gsel {
+	/* scale: 200%; */
+	/* z-index: 1; */
+	box-shadow: inset 0vmin 0vmin 3vmin theme(colors.white);
+}
+.ghigh {
+	/* border-radius: 100%; */
+	background-color: theme(colors.red.800);
+	scale: 60%;
+}
+.ghigh2 {
+	background-color: grey;
+}

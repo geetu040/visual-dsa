@@ -1,4 +1,4 @@
-import {extract_graph, operate} from "./utils"
+import {extract_graph, operate, inverse_extract_graph} from "./utils"
 
 import backtracking from "./algos/backtracking";
 import dijkstra from "./algos/dijkstra";
@@ -8,10 +8,10 @@ import prims from "./algos/prims";
 import astar from "./algos/astar";
 
 const algos = {
-	"BFS": bfs,
-	"Prim's": prims,
 	"Dijkstra's": dijkstra,
 	"Backtracking": backtracking,
+	"BFS": bfs,
+	"Prim's": prims,
 	"A Star AI": astar,
 	"DFS": dfs,
 }
@@ -22,6 +22,8 @@ function apply_algo(graph) {
 
 	// extracting the graph
 	let [map, src, des] = extract_graph(graph);
+	// console.log(inverse_extract_graph(map));
+	// return;
 
 	// running the algorithm
 	let algo = document.getElementsByClassName("g-select")[0].value;

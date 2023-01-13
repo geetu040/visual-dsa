@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect } from 'react';
-import "../../css/graph/Box.css"
 
 export const Box = ({ props }) => {
 
@@ -11,23 +10,25 @@ export const Box = ({ props }) => {
 	});
 
 	return (
-		<div className='border box-content border-red-900 relative' style={{ width: `${props.box_width}vmin`, height: `${props.box_width}vmin` }}>
+		<div className='p-0 m-0 bg-blue-100 shadow-2xl shadow-blue-900 box-content relative' style={{ width: `${props.box_width}vmin`, height: `${props.box_width}vmin` }}>
 			{props.map.map((v, i) => {
 				return (
 					<div
 						ref={props.addToRefs}
 						key={i}
 						className={`
+							cursor-pointer
+							
 							absolute
 							g${v}
 							${(v == 1) && `
-
 							`}
 						`}
 						style={{
 							width: `${props.box_width / props.s}vmin`,
 							height: `${props.box_width / props.s}vmin`,
-							transition: "left 0.2s, top 0.2s",
+							transition: "left 0.05s, top 0.05s",
+							transitionTimingFunction: "linear"
 						}}
 						onClick={(cur) => {
 							let gsel = document.getElementsByClassName("gsel")[0];
@@ -38,8 +39,10 @@ export const Box = ({ props }) => {
 									gsel.classList.remove("gsel");
 									props.swap_elem(props.graph, gsel, target);
 								} else {
-									target.classList.remove("g0")
-									target.classList.add("g1")
+									if (document.getElementsByClassName("g0").length / props.map.length > props.min_ratio) {
+										target.classList.remove("g0")
+										target.classList.add("g1")
+									}
 								}
 							}
 							else if (target.classList.contains("g1")) {
@@ -47,8 +50,10 @@ export const Box = ({ props }) => {
 									gsel.classList.remove("gsel");
 									props.swap_elem(props.graph, gsel, target);
 								} else {
-									target.classList.remove("g1")
-									target.classList.add("g0")
+									if (document.getElementsByClassName("g1").length / props.map.length > props.min_ratio) {
+										target.classList.remove("g1")
+										target.classList.add("g0")
+									}
 								}
 							}
 							else if (target === gsel) {

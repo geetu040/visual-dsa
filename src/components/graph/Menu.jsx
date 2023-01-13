@@ -1,30 +1,39 @@
 import React from 'react'
 
 export const Menu = ({ props }) => {
-	setTimeout(() => {
-		// props.apply_algo(props.graph);
-	}, 100);
+	const btnStyle = `
+		shadow-2xl shadow-blue-900 bg-blue-100 border-blue-900
+		border-2 font-bold
+		transition-color p-2 rounded-md
+		my-1
+	`
 	return (
-		<div className=''>
+		<div className='mx-4 my-5'>
+			<div className='flex flex-col flex-wrap text-xl'>
+				<select
+					className={`
+						g-select ${btnStyle}
+					`}
+					>
+					{props.algo_names.map((algo, i) => {
+						return <option
+							key={i}
+							value={i}
+						>{algo}
+						</option>
+					})}
+				</select>
 
-			<select
-				className='g-select'
-				>
-				{props.algo_names.map((algo, i) => {
-					return <option
-						key={i}
-						value={i}
-					>{algo}
-					</option>
-				})}
-			</select>
-
-			<button
-				className='bg-blue-300 g-btn'
-				onClick={() => {
-					props.send_apply_algo();
-				}}
-			>Apply</button>
+				<button
+					className={`${btnStyle} g-btn
+						w-[80%] mx-auto
+						hover:bg-blue-900 hover:text-blue-200 disabled:cursor-not-allowed
+					`}
+					onClick={() => {
+						props.send_apply_algo();
+					}}
+				>Apply</button>
+			</div>
 		</div>
 	)
 }
