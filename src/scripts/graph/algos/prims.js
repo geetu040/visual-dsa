@@ -47,15 +47,16 @@ function getPath(graph, src, des)
 		u = findNextBest(graph, visited);
 
 		let min = s*s + 1;
-		visited.forEach((v)=>{
-			graph[v].forEach((_, i)=>{
-				if (_ === 1 && visited.indexOf(i) === -1 && graph[v][i] <= min) {
+		for (let v_i=0; v_i<visited.length; v_i++) {
+			let v = visited[v_i];
+			for (let i=0; i<graph[v].length; i++) {
+				if (graph[v][i] === 1 && visited.indexOf(i) === -1 && graph[v][i] <= min) {
 					min = graph[v][i];
 					u = i;
 					p = v;
 				}
-			})
-		})
+			}
+		}
 	}
 	return create_ops(visited, prev, src, last_stable);
 }
