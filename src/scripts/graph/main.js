@@ -7,27 +7,34 @@ import bfs from "./algos/bfs";
 import prims from "./algos/prims";
 import astar from "./algos/astar";
 
+const algos = {
+	"BFS": bfs,
+	"Prim's": prims,
+	"Dijkstra's": dijkstra,
+	"Backtracking": backtracking,
+	"A Star AI": astar,
+	"DFS": dfs,
+}
+const algo_names = Object.keys(algos);
+const alog_fns = Object.values(algos);
+
 function apply_algo(graph) {
+
 	// extracting the graph
 	let [map, src, des] = extract_graph(graph);
-	console.log(map)
 
 	// running the algorithm
-	let ops;
-	// ops = backtracking(map, src, des);
-	// ops = dijkstra(map, src, des);
-	// ops = dfs(map, src, des);
-	// ops = bfs(map, src, des);
-	// ops = prims(map, src, des);
-	ops = astar(map, src, des);
-	// return;
+	let algo = document.getElementsByClassName("g-select")[0].value;
+	let ops = alog_fns[algo](map, src, des);
+	// return
 
 	// running operation
-	operate(graph, ops.slice(0, 1000));
+	document.getElementsByClassName("g-btn")[0].disabled = true;
+	operate(graph, ops);
 
 }
 
 
 export {
-	apply_algo
+	algo_names, apply_algo
 }

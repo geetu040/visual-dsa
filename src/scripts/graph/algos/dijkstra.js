@@ -1,4 +1,4 @@
-import { pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
 
 function minDistance(dist, sptSet)
 {
@@ -35,6 +35,7 @@ function getPath(graph, src, des)
 	dist[src] = 0;
 
 	let found = false;
+	let last_stable = src;
 	for (let count = 0; count < s - 1; count++)
 	{
 		let u = minDistance(dist, sptSet);
@@ -47,6 +48,7 @@ function getPath(graph, src, des)
 			if (!sptSet[v] && graph[u][v] && dist[u]!==s*s+1 && dist[u] + graph[u][v] < dist[v]) {
 				dist[v] = dist[u] + graph[u][v];
 				prev[v] = u;
+				last_stable = v;
 				if (v === des) {
 					found = true;
 					break;
@@ -57,6 +59,7 @@ function getPath(graph, src, des)
 			break;
 		}
 	}
+	return create_ops(visited, prev, src, last_stable);
 	
 	visited.forEach((u)=>{
 		ops.push({ "sel": u })

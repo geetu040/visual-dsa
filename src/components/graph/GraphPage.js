@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 
 import { Box } from './Box'
 import { Menu } from './Menu';
 
 import map from "./map.json"
-import { apply_algo } from '../../scripts/graph/main';
+import { algo_names, apply_algo } from '../../scripts/graph/main';
 import { box_width, swap, swap_elem, spaceItems } from '../../scripts/graph/utils';
 
 export const GraphPage = () => {
@@ -58,7 +58,13 @@ export const GraphPage = () => {
 		})
 	}
 
+	const send_apply_algo = ()=>{
+		apply_algo(graph);
+	}
 
+	setTimeout(() => {
+		// send_apply_algo();
+	}, 500);
 
 	let props = {
 		map,
@@ -68,9 +74,9 @@ export const GraphPage = () => {
 		addToRefs,
 		pointyCorners,
 		spaceItems,
-		swap_elem,
-		swap,
-		apply_algo,
+		swap_elem, swap,
+		algo_names,
+		send_apply_algo,
 	}
 
 	return (

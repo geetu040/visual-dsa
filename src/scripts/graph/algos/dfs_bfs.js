@@ -1,4 +1,4 @@
-import { pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
 
 function getPath(graph, src, des, method)
 {
@@ -15,6 +15,8 @@ function getPath(graph, src, des, method)
 	}
 
 	to_visit.push(src);
+
+	let last_stable = src;
 
 	while (to_visit.length > 0)
 	{
@@ -41,10 +43,13 @@ function getPath(graph, src, des, method)
 				}
 			}
 		}
+		last_stable = u;
 		if (found) {
+			last_stable = v;
 			break;
 		}
 	}
+	return create_ops(visited, prev, src, last_stable);
 
 	visited.forEach((u)=>{
 		if (u !== src && u !== des) {

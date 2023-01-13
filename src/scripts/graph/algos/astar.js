@@ -86,24 +86,29 @@ function getPath(graph, src, des) {
 	let p;
 
 	// for (let i=0; i<s*s; i++)
+	let last_stable = src;
 	while(cur !== des)
 	{
 		visited.push(cur);
 		
 		[cur, p] = findBest(graph, dist, visited, des);
 		
-		prev[cur] = p;
-		dist[cur] = dist[p]+1;
-		
 		if (cur === undefined) {
-			console.log(visited);
-			console.log("undefined");
+			
+			// console.log(visited);
+			// console.log("undefined");
 			break;
 		}
 
-	}
+		prev[cur] = p;
+		dist[cur] = dist[p]+1;
+		last_stable = cur;
+		
 
-	return create_ops(visited, prev, src, des);
+	}
+	// console.log(visited, last_stable);
+
+	return create_ops(visited, prev, src, last_stable);
 
 }
 

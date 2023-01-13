@@ -130,7 +130,12 @@ function find_best_path(paths) {
 export default function backtracking(graph, src, des) {
 	let s = graph.length
 	let [paths, ops] = getPossiblePaths(graph, src, des);
-	let best_path = find_best_path(paths);
+	let best_path;
+	if (paths.length !== 0) {
+		best_path = find_best_path(paths);
+	} else {
+		best_path = "";
+	}
 	let best_path_ind = [pos_to_index(src, s)].concat(
 		convert_path(best_path, src, s
 	))

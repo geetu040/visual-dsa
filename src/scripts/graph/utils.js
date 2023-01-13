@@ -1,5 +1,20 @@
 const box_width = 80
 
+function getTransitionEndEventName() {
+	var transitions = {
+		"transition": "transitionend",
+		"OTransition": "oTransitionEnd",
+		"MozTransition": "transitionend",
+		"WebkitTransition": "webkitTransitionEnd"
+	}
+	let bodyStyle = document.body.style;
+	for (let transition in transitions) {
+		if (bodyStyle[transition] !== undefined) {
+			return transitions[transition];
+		}
+	}
+}
+
 function index_to_pos(ind, s) {
 	return [
 		Math.floor(ind / s),	// x
@@ -34,9 +49,11 @@ function extract_graph(graph) {
 }
 function operate(graph, ops) {
 	if (ops.length === 0) {
+		document.getElementsByClassName("g-btn")[0].disabled = false;
 		return;
 	}
 	let op = ops[0];
+	let delay = null;
 
 	if (op.sel !== undefined) {
 		graph[op.sel].classList.add("ghigh");
@@ -44,19 +61,23 @@ function operate(graph, ops) {
 	if (op.desel !== undefined) {
 		graph[op.desel].classList.remove("ghigh");
 	}
-	if (op.sel2 !== undefined) {
-		graph[op.sel2].classList.add("ghigh2");
-	}
-	if (op.desel2 !== undefined) {
-		graph[op.desel2].classList.remove("ghigh2");
-	}
 	if (op.swap !== undefined) {
+		delay = graph[op.swap[0]]
 		swap(graph, ...op.swap)
 	}
 
-	setTimeout(() => {
-		operate(graph, ops.slice(1))
-	}, 50);
+	if (delay) {
+		delay.addEventListener(getTransitionEndEventName(), ()=>{
+			operate(graph, ops.slice(1));
+		}, {once : true});
+	}
+	else {
+		setTimeout(() => {
+			operate(graph, ops.slice(1));
+		}, 50);
+	}
+
+
 }
 function shuffle_arr(array) {
 	for (var i = array.length - 1; i > 0; i--) {
@@ -83,7 +104,7 @@ const spaceItems = (graph) => {
 	})
 }
 function path_ind_to_ops(path) {
-	if (path.length === 2) {
+	if (path.length < 3 ) {
 		return []
 	}
 	return [{ "swap": [path[0], path[1]] }].concat(
@@ -160,7 +181,9 @@ function create_ops(visited, prev, src, des) {
 		path = [cur].concat(path)
 		cur = prev[cur];
 	}
-	path = [src].concat(path)
+	if (path.length < 2) {
+		return []
+	}
 	let path_ops = path_ind_to_ops(path)
 
 	ops.push(...path_ops);

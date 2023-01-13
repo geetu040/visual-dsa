@@ -1,4 +1,4 @@
-import { pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
+import { create_ops, pos_to_index, path_ind_to_ops, get_sparse } from "../utils";
 
 function findNextBest(graph, visited)
 {
@@ -34,9 +34,11 @@ function getPath(graph, src, des)
 	let found = false;
 	let u = src;
 	let p = null;
+	let last_stable = u;
 	
 	while (u !== undefined)
 	{
+		last_stable = u;
 		visited.push(u);
 		prev[u] = p;
 
@@ -57,6 +59,7 @@ function getPath(graph, src, des)
 			})
 		})
 	}
+	return create_ops(visited, prev, src, last_stable);
 
 
 	visited.forEach((u)=>{
