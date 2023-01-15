@@ -1,18 +1,18 @@
 import React from 'react'
+import { PopUp } from './PopUp'
 
 export const Menu = ({ props }) => {
 	const btnStyle = `
 		shadow-2xl shadow-blue-900 bg-blue-100 border-blue-900
 		border-2 font-bold
 		transition-color p-2 rounded-md
-		my-1
 	`
 	return (
-		<div className='mx-4 my-5'>
-			<div className='flex flex-col flex-wrap text-xl'>
+		<div className='px-3 py-2'>
+			<div className='flex flex-col text-xl space-y-3 justify-center items-center'>
 				<select
 					className={`
-						g-select ${btnStyle}
+						g-select ${btnStyle} w-48
 					`}
 					>
 					{props.algo_names.map((algo, i) => {
@@ -25,14 +25,14 @@ export const Menu = ({ props }) => {
 				</select>
 
 				<button
-					className={`${btnStyle} g-btn
-						w-[80%] mx-auto
+					className={`${btnStyle} g-btn w-32
 						hover:bg-blue-900 hover:text-blue-200 disabled:cursor-not-allowed
 					`}
 					onClick={() => {
 						props.send_apply_algo();
 					}}
 				>Apply</button>
+				<PopUp props={props} />
 			</div>
 		</div>
 	)

@@ -1,5 +1,6 @@
 import { Box } from './Box'
 import { Menu } from './Menu';
+import { useState } from 'react';
 
 // import map from "./map1.json"
 import { algo_names, apply_algo } from '../../scripts/graph/main';
@@ -9,6 +10,7 @@ export const GraphPage = () => {
 
 	const s = Math.sqrt(map.length);
 	const min_ratio = 0.3;
+	const [pop, set_pop] = useState(true);
 
 	let graph = [];
 	const addToRefs = (elem) => {
@@ -74,6 +76,7 @@ export const GraphPage = () => {
 		algo_names,
 		send_apply_algo,
 		min_ratio,
+		pop, set_pop,
 	}
 
 	return (
@@ -81,7 +84,7 @@ export const GraphPage = () => {
 			<h1 className='font-gutter font-bold text-6xl py-7 text-center'>
 				Graph Algorithms
 			</h1>
-			<div className='w-[100%] flex flex-wrap-reverse mx-auto justify-center'>
+			<div className='w-[100%] flex flex-wrap-reverse mx-auto justify-center items-end'>
 				<Box props={props} />
 				<Menu props={props} />
 			</div>

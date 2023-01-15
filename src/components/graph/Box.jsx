@@ -28,6 +28,10 @@ export const Box = ({ props }) => {
 							transitionTimingFunction: "linear"
 						}}
 						onClick={(cur) => {
+							let btnDisabled = document.getElementsByClassName("g-btn")[0].disabled
+							if (btnDisabled) {
+								return;
+							}
 							let gsel = document.getElementsByClassName("gsel")[0];
 
 							let target = cur.currentTarget;
