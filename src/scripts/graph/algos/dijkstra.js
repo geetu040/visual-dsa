@@ -58,7 +58,7 @@ function getPath(graph, src, des)
 			break;
 		}
 	}
-	return create_ops(visited, prev, src, last_stable);
+	return create_ops(visited, prev, src, des, found);
 }
 
 export default function dijkstra(graph, src, des) {

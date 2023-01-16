@@ -163,7 +163,7 @@ function inverse_extract_graph(graph) {
 	return map;
 }
 
-function create_ops(visited, prev, src, des) {
+function create_ops(visited, prev, src, des, found) {
 	let ops = [];
 
 	visited.forEach((u)=>{
@@ -179,18 +179,20 @@ function create_ops(visited, prev, src, des) {
 	})
 	ops.push(...rev_ops);
 
-	let path = []
-	let cur = des;
-	while (cur) {
-		path = [cur].concat(path)
-		cur = prev[cur];
+	if (found) {
+		let path = []
+		let cur = des;
+		while (cur) {
+			path = [cur].concat(path)
+			cur = prev[cur];
+		}
+		if (path.length < 2) {
+			return []
+		}
+		let path_ops = path_ind_to_ops(path)
+		ops.push(...path_ops);
 	}
-	if (path.length < 2) {
-		return []
-	}
-	let path_ops = path_ind_to_ops(path)
 
-	ops.push(...path_ops);
 	return ops;
 }
 

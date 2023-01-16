@@ -9,8 +9,6 @@ function findBest(graph, dist, visited, des) {
 
 
 	visited.forEach((v)=>{
-		// console.log(v);
-		// console.log(v);
 		// right
 		if (v%s !== s-1 && !visited.includes(v+1) && graph[v+1]===0) {
 			// if (v===40) {console.log("right")}
@@ -87,6 +85,7 @@ function getPath(graph, src, des) {
 
 	// for (let i=0; i<s*s; i++)
 	let last_stable = src;
+	let found = true;
 	while(cur !== des)
 	{
 		visited.push(cur);
@@ -94,9 +93,7 @@ function getPath(graph, src, des) {
 		[cur, p] = findBest(graph, dist, visited, des);
 		
 		if (cur === undefined) {
-			
-			// console.log(visited);
-			// console.log("undefined");
+			found = false;
 			break;
 		}
 
@@ -106,9 +103,8 @@ function getPath(graph, src, des) {
 		
 
 	}
-	// console.log(visited, last_stable);
 
-	return create_ops(visited, prev, src, last_stable);
+	return create_ops(visited, prev, src, des, found);
 
 }
 

@@ -34,6 +34,7 @@ function getPath(graph, src, des)
 	let p = null;
 	let last_stable = u;
 	
+	let found = false;
 	while (u !== undefined)
 	{
 		last_stable = u;
@@ -41,6 +42,7 @@ function getPath(graph, src, des)
 		prev[u] = p;
 
 		if (u === des) {
+			found = true;
 			break;
 		}
 
@@ -58,7 +60,7 @@ function getPath(graph, src, des)
 			}
 		}
 	}
-	return create_ops(visited, prev, src, last_stable);
+	return create_ops(visited, prev, src, des, found);
 }
 
 export default function prims(graph, src, des) {
