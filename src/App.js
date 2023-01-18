@@ -6,7 +6,7 @@ import { SortingPage } from "./components/sorting/SortingPage";
 import { GraphPage } from "./components/graph/GraphPage";
 
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Routes,
     Route,
 } from "react-router-dom";
