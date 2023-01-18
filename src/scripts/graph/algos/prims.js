@@ -32,12 +32,12 @@ function getPath(graph, src, des)
 
 	let u = src;
 	let p = null;
-	let last_stable = u;
+	// let last_stable = u;
 	
 	let found = false;
 	while (u !== undefined)
 	{
-		last_stable = u;
+		// last_stable = u;
 		visited.push(u);
 		prev[u] = p;
 

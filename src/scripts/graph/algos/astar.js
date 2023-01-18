@@ -84,7 +84,7 @@ function getPath(graph, src, des) {
 	let p;
 
 	// for (let i=0; i<s*s; i++)
-	let last_stable = src;
+	// let last_stable = src;
 	let found = true;
 	while(cur !== des)
 	{
@@ -99,7 +99,7 @@ function getPath(graph, src, des) {
 
 		prev[cur] = p;
 		dist[cur] = dist[p]+1;
-		last_stable = cur;
+		// last_stable = cur;
 		
 
 	}

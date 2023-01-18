@@ -15,7 +15,7 @@ function getPath(graph, src, des, method)
 
 	to_visit.push(src);
 
-	let last_stable = src;
+	// let last_stable = src;
 
 	while (to_visit.length > 0)
 	{
@@ -42,9 +42,9 @@ function getPath(graph, src, des, method)
 				}
 			}
 		}
-		last_stable = u;
+		// last_stable = u;
 		if (found) {
-			last_stable = v;
+			// last_stable = v;
 			break;
 		}
 	}
